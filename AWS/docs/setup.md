@@ -2,8 +2,10 @@
 
 ## Overview
 - Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
-- Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template (optional).
+- (Optional) Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template.
 - Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
+
+---
 
 ## Step 1 - Create Prisma Cloud Remediation Stack
 [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-remediation-us-west-2.s3-us-west-2.amazonaws.com/templates/cloudformation_prisma_template.json)
