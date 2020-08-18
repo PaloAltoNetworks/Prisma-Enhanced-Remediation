@@ -17,19 +17,19 @@ runbook_lookup = {
     '551ee7ba-edb6-468e-a018-8774da9b1e85' : 'AWS-ELB-012',
     'b675c604-e886-43aa-a60f-a9ad1f3742d3' : 'AWS-ELB-013',
     'f2a2bcf1-2966-4cb5-9230-bd39c9903a02' : 'AWS-ELB-015',
-    '617b9138-584b-4e8e-ad15-7fbabafbed1a' : 'AWS-EC2-002',
-    '519456f2-f9eb-407b-b32d-064f1ac7f0ca' : 'AWS-EC2-003',
-    'b82f90ce-ed8b-4b49-970c-2268b0a6c2e5' : 'AWS-EC2-004',
-    '65daa6a0-e040-434e-aca3-9d5765c96e7c' : 'AWS-EC2-009',
-    '3b642d25-4534-487a-9399-c2622754ecb5' : 'AWS-EC2-010',
-    '760f2823-997e-495f-a538-5fb073c0ee78' : 'AWS-EC2-011',
-    'ab7f8eda-18ab-457c-b5d3-fd4f53c722bc' : 'AWS-EC2-013',
-    '8dd9e369-0c09-4477-97a2-ff0d50507fe2' : 'AWS-EC2-014',
-    '89cbc2f1-fcb0-48b9-be71-4cbe2d18a5f7' : 'AWS-EC2-015',
-    '14d10ad2-51df-4b07-be69-e94951cc7067' : 'AWS-EC2-019',
-    'cdcd663c-e9c9-4472-9779-e5f38751524a' : 'AWS-EC2-020',
-    'c2074d5a-aa28-4dde-90c1-82f528cec55e' : 'AWS-EC2-021',
-    '6eaf6455-1659-4c4b-bff5-c8c7b0fda201' : 'AWS-EC2-024',
+    '617b9138-584b-4e8e-ad15-7fbabafbed1a' : 'AWS-EC2-002-old',
+    '519456f2-f9eb-407b-b32d-064f1ac7f0ca' : 'AWS-EC2-003-old',
+    'b82f90ce-ed8b-4b49-970c-2268b0a6c2e5' : 'AWS-EC2-004-old',
+    '65daa6a0-e040-434e-aca3-9d5765c96e7c' : 'AWS-EC2-100-old',
+    '3b642d25-4534-487a-9399-c2622754ecb5' : 'AWS-EC2-100-old',
+    '760f2823-997e-495f-a538-5fb073c0ee78' : 'AWS-EC2-100-old',
+    'ab7f8eda-18ab-457c-b5d3-fd4f53c722bc' : 'AWS-EC2-100-old',
+    '8dd9e369-0c09-4477-97a2-ff0d50507fe2' : 'AWS-EC2-100-old',
+    '89cbc2f1-fcb0-48b9-be71-4cbe2d18a5f7' : 'AWS-EC2-100-old',
+    '14d10ad2-51df-4b07-be69-e94951cc7067' : 'AWS-EC2-100-old',
+    'cdcd663c-e9c9-4472-9779-e5f38751524a' : 'AWS-EC2-100-old',
+    'c2074d5a-aa28-4dde-90c1-82f528cec55e' : 'AWS-EC2-100-old',
+    '6eaf6455-1659-4c4b-bff5-c8c7b0fda201' : 'AWS-EC2-100-old',
     '81a2200a-c63e-4860-85a0-b54eaa581135' : 'AWS-EC2-036',
     '2378dbf4-b104-4bda-9b05-7417affbba3f' : 'AWS-EC2-038',
     '566686e8-0581-4df5-ae22-5a901ed37b58' : 'AWS-EC2-039',
@@ -157,7 +157,7 @@ def lambda_handler(event, context):
 
             # Check to see if the remediation runbook exists 
             try:
-                runbook = import_module('runbook.' + parsed_alert['runbook_id'])
+                runbook = import_module('runbooks.' + parsed_alert['runbook_id'])
             except Exception as e:
                 message = 'Cannot import/find runbook for {0} ({1}). Error: {2}'.format(parsed_alert['runbook_id'], parsed_alert['signature_id'], str(e))
                 raise Exception(message)

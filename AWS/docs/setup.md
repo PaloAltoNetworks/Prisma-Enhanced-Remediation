@@ -1,4 +1,4 @@
-# Setup
+# Setup Guide
 
 ## Overview
 - Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
