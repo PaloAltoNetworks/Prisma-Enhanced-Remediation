@@ -54,8 +54,7 @@
     "PrismaRemedySQSQueue" : {
       "Type" : "AWS::SQS::Queue",
       "Properties" : {
-         "QueueName" : "PrismaRemediationQueue.fifo",
-         "FifoQueue" : true,
+         "QueueName" : "PrismaRemediationQueue",
          "VisibilityTimeout" : 1800
       }
     },
