@@ -87,7 +87,7 @@ def parse_alert_message(sqs_message):
                 'account_number' : alert['accountId']
             },
             'runbook_id'         : None,
-            'metadata'           : alert['resourceConfig']
+            'metadata'           : alert['resource']
         }
 
         # Default region set to us-east-1 if we receive "global" region
