@@ -3,25 +3,29 @@
 ![Diagram](images/prisma_lambda_diagram.jpg)
 
 ## Setup
+
 Please see the [Setup Guide](docs/setup.md).
 
 ## How it works
+
 The Prisma Cloud platform sends alert messages to an AWS SQS Queue. SQS invokes a lambda function (index.py). The function then calls the appropriate runbook script to remediate the alert(s).
 
-The `lambda_package` consists of two main components: `index.py` and `runbook`.
+The `lambda_package` consists of two main components: `index_prisma.py` and the `runbooks` folder.
 
-### index.py
+### `index_prisma.py`
+
 This is the lambda function handler. It does the following:
-- Parse/simplify the raw alert message. 
+
+- Parse/simplify the raw alert message.
 - Generate boto3 session based on the account ID and region. If the resource is located in another AWS account, lambda function will do `sts.assumeRole` and build the session to handle the remediation.
-- Trigger corresponding runbook. 
+- Trigger corresponding runbook.
 
 The `parsed_alert` message has the following structure:
 
-```
+```text
 - resource_id           : AWS resource ID.
 - alert_id              : Prisma Cloud alert ID.
-- account               
+- account
     + name              : Account name.
     + account_number    : AWS account number ID.
 - region                : AWS region code. (Example: us-east-1)
@@ -29,12 +33,13 @@ The `parsed_alert` message has the following structure:
 - metadata              : Alert metadata object.
 ```
 
-### Runbook
-All remediation scripts/runbooks will be in this folder. Each runbook corresponds to a particular policy ID. 
+### Runbooks
+
+All remediation scripts/runbooks will be in this folder. Each runbook corresponds to a particular policy ID.
 
 The runbook itself looks like:
 
-```
+```python
 """
 Remediate Prisma Cloud Policy:
 
@@ -115,8 +120,8 @@ def ec2_fix_it(ec2, resource_id):
 ```
 
 Notice the following:
-- **remediate**: is the function that will be invoked by `index.py`.
+
+- **remediate**: is the function that will be invoked by `index_prisma.py`.
 - **session**: boto3 session, already tied to a region where the resource in the alert resides.
 - **alert**: See `parsed_alert` message.
-- **lambda_context**: The context object contains useful info about the lambda function. More info can be found in the following [AWS Documentation](https://docs.aws.amazon.com/lambda/latest/dg/python-context-object.html)
-
+- **lambda_context**: The context object contains useful info about the lambda function. More info can be found in the following [AWS Documentation](https://docs.aws.amazon.com/lambda/latest/dg/python-context-object.html).
