@@ -117,7 +117,7 @@ def get_credentials(account_id):
             SessionToken
     """
 
-    cross_account_role_name = os.getenv('CROSS_ACCOUNT_ROLE_NAME',None)
+    cross_account_role_name = os.getenv('CROSS_ACCOUNT_ROLE_NAME', None)
 
     if cross_account_role_name == None:
         return {'error': 'Lambda env variable CROSS_ACCOUNT_ROLE_NAME not specified.', 'data': None}
@@ -146,7 +146,6 @@ def lambda_handler(event, context):
 
         if parsed_alert['data'] == 'P-0':
             print(parsed_alert['error'])
-            return
         else:
             
             if parsed_alert['error'] is not None:
@@ -184,4 +183,3 @@ def lambda_handler(event, context):
             print('Executing runbook; ', parsed_alert['runbook_id'], '...')
 
             runbook.remediate(session, parsed_alert, context)
-            return
