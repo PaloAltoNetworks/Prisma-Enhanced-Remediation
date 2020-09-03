@@ -5,9 +5,9 @@ AWS:EC2-100 Global Admin Port Access Detected
 
 Description:
 
-Global permission to access the well known services should not be allowed in a security group.
+Global permission to access the well-known services should not be allowed in a security group.
 
-**Note: Remediation will be executed if the well know service is found within a port range.
+**Note: Remediation will be executed if the well-known service is found within a port range.
 
 Required Permissions:
 

@@ -15,7 +15,12 @@ If there's an existing password policy, the remediation script will:
 - take the higher number for MinimumPasswordLength and PasswordReusePrevention
 - take the lower number for MaxPasswordAge
 
-Required permissions / Sample IAM Policy:
+Required Permissions:
+
+- iam:UpdateAccountPasswordPolicy
+
+Sample IAM Policy:
+
 {
   "Version": "2012-10-17",
   "Statement": [
