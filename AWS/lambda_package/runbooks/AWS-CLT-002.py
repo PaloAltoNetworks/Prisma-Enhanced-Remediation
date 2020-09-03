@@ -125,10 +125,10 @@ def remediate(session, alert, lambda_context):
     if not bucket_region: bucket_region = 'us-east-1'     # N. Virginia
     if bucket_region == 'EU': bucket_region = 'eu-west-1' # Ireland
 
-    key_id = create_cmk(account_id, trail_name, bucket_region)
+    key_id = create_cmk(session, account_id, trail_name, bucket_region)
 
     if key_id != 'fail':
-      result = update_trail_cmk(clt, trail_name, key_id)
+      update_trail_cmk(clt, trail_name, key_id)
 
   return
 
@@ -139,7 +139,7 @@ def update_trail_cmk(clt, trail_name, key_id):
   """
 
   try:
-    result = clt.update_trail(
+    clt.update_trail(
       Name = trail_name,
       KmsKeyId = key_id
     )
@@ -152,7 +152,7 @@ def update_trail_cmk(clt, trail_name, key_id):
   return
 
 
-def create_cmk(account_id, trail_name, bucket_region):
+def create_cmk(session, account_id, trail_name, bucket_region):
   """
   Create Customer Managed Key (CMK)
   """
@@ -180,7 +180,7 @@ def create_cmk(account_id, trail_name, bucket_region):
 
   # Create CMK alias
   try:
-    result = kms.create_alias(
+    kms.create_alias(
       AliasName = cmk_alias_name,
       TargetKeyId = key_id
     )
@@ -190,8 +190,9 @@ def create_cmk(account_id, trail_name, bucket_region):
   return key_id
 
 
-class KMSTemplate():
+class KMSTemplate:
 
+  @staticmethod
   def CMKPolicy(account_id, bucket_region):
 
     Policy = {

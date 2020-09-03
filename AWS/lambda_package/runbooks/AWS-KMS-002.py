@@ -11,7 +11,7 @@ The minimum amount of time required for scheduling a key deletion is seven days 
 
 Required Permissions:
 
-- kms:DescribeKeys
+- kms:DescribeKey
 - kms:DisableKey
 - kms:CancelKeyDeletion
 
@@ -23,7 +23,7 @@ Sample IAM Policy:
     {
       "Sid": "KMSPermissions",
       "Action": [
-	"kms:DescribeKeys",
+	      "kms:DescribeKey",
         "kms:DisableKey",
         "kms:CancelKeyDeletion"
       ],
