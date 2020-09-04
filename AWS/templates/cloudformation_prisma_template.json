@@ -31,7 +31,7 @@
 
   "Parameters": {
     "SourceCodeBucket": {
-      "Default": "prisma-remediation-us-west-2", 
+      "Default": "prisma-lambda-remediation", 
       "MinLength": "4", 
       "Type": "String", 
       "Description": "Specify the S3Bucket for Lambda source code."

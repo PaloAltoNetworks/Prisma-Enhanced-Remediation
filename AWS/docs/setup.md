@@ -10,7 +10,7 @@
 
 ## Step 1 - Create Prisma Cloud Remediation Stack
 
-[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-remediation-us-west-2.s3-us-west-2.amazonaws.com/templates/cloudformation_prisma_template.json)
+[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-lambda-remediation.s3-us-west-2.amazonaws.com/templates/cloudformation_prisma_template.json)
 
 This CloudFormation stack creates the following resources in the Oregon (us-west-2) region:
 
@@ -34,7 +34,7 @@ When you created the CloudFormation stack in step 1, one of the parameters was c
 
 For Multi Account Setup, you will need to create this IAM Role in each Child/Target AWS account.
 
-[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-remediation-us-west-2.s3-us-west-2.amazonaws.com/templates/cloudformation_role_template.json)
+[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-lambda-remediation.s3-us-west-2.amazonaws.com/templates/cloudformation_role_template.json)
 
 When you get to the **Specify stack details** page, ensure that you replace the `AWSParentAccountId` paramater value to match the [**Parent** account's AWS ID](https://console.aws.amazon.com/billing/home?#/account).
 
