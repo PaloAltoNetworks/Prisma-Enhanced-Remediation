@@ -9,7 +9,7 @@ S3 buckets now require Server Side Encryption on creation of all objects via buc
 
 Required Permissions:
 
-- s3:PutBucketEncryption
+- s3:PutEncryptionConfiguration
 
 Sample IAM Policy:
 
@@ -19,7 +19,7 @@ Sample IAM Policy:
     {
       "Sid": "S3Permissions",
       "Action": [
-        "s3:PutBucketEncryption"
+        "s3:PutEncryptionConfiguration"
       ],
       "Effect": "Allow",
       "Resource": "*"
