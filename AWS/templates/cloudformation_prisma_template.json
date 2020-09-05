@@ -31,13 +31,13 @@
 
   "Parameters": {
     "SourceCodeBucket": {
-      "Default": "prisma-remediation-us-west-2", 
+      "Default": "prisma-lambda-remediation", 
       "MinLength": "4", 
       "Type": "String", 
       "Description": "Specify the S3Bucket for Lambda source code."
     }, 
     "SourceCodeKeyPath": {
-      "Default": "lambda/PrismaRemediate-2020-08-19.zip",
+      "Default": "lambda/PrismaRemediate-2020-09-02.zip",
       "MinLength": "4", 
       "Type": "String", 
       "Description": "Specify the S3 Path for Lambda source code."
