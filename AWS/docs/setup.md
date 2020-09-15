@@ -2,9 +2,9 @@
 
 ## Overview
 
-- Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
-- (Optional) Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template.
-- Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
+1. Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
+2. (Optional) Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template.
+3. Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
 
 ---
 
@@ -51,6 +51,8 @@ You will need to get the **PrismaRemediationSQSQueue** URL from the Output secti
 - Select the **Outputs** tab.
 - Take note of the **PrismaRemediationSQSQueue** URL.
 
+![Output](../images/cfn_output.jpg)
+
 Create a new Prisma Cloud Integration:
 
 - Login to the Prisma Cloud console.
@@ -65,13 +67,13 @@ At this point, the remediation infrastructure setup is complete.  Let's check...
 
 Check CloudWatchLogs:
 
-- Go to your AWS Lambda Dashboard.
+- Go to the [AWS Lambda Dashboard](https://us-west-2.console.aws.amazon.com/lambda).
 - Click on your Function name.
 - Near the top of the next screen, select the **Monitoring** tab.
 - Choose **View logs in CloudWatch** near the the top right-hand side of the screen.
 - From the new window/tab, click on the latest new log stream.  You should see a test message from Prisma Cloud, sent from your SQS Queue test, similar to the one below.
 
-![Diagram](../images/logs_output.jpg)
+![Output](../images/logs_output.jpg)
 
 - If you don't see the Prisma Cloud test message, or an error occurred, move to **Further Troubleshooting Lambda**.
 
