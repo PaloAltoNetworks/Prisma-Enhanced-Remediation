@@ -58,7 +58,22 @@ Create a new Prisma Cloud Integration:
 - Choose **Integrations**.
 - Near the top of the window, click **Add new**.
 - Fill out the **Integration name** and **Queue URL** fields, then click Next.  Use the SQS Queue URL from the Output of your CloudFormation stack.
-- Click **Test**, then Save.
+- Click **Test**. You should receive a Success message. If not, double check your URL.
+- **Save** your new integration.
+
+At this point, the remediation infrastructure setup is complete.  Let's check...
+
+Check CloudWatchLogs:
+
+- Go to your AWS Lambda Dashboard.
+- Click on your Function name.
+- Near the top of the next screen, select the **Monitoring** tab.
+- Choose **View logs in CloudWatch** near the the top right-hand side of the screen.
+- From the new window/tab, click on the latest new log stream.  You should see a test message from Prisma Cloud, sent from your SQS Queue test, similar to the one below.
+
+![Diagram](images/logs_output.jpg)
+
+- If you don't see the Prisma Cloud test message, or an error occurred, move to **Further Troubleshooting Lambda**.
 
 Create a new Prisma Cloud Alert rule:
 
@@ -71,3 +86,7 @@ Create a new Prisma Cloud Alert rule:
 - Choose the Policies you'd like to remediate, then **Next**.
 - Enable **Amazon SQS** queue and select the integration you created above.
 - Save your new Alert rule.
+
+## Step 4 - (Optional) Further Troubleshooting Lambda
+
+
