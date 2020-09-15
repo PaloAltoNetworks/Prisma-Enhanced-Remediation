@@ -13,6 +13,7 @@ Required Permissions:
 - iam:PutRolePolicy
 - iam:CreateRole
 - iam:GetRole
+- iam:PassRole
 - logs:CreateLogGroup
 - logs:PutRetentionPolicy
 - ec2:CreateFlowLogs
@@ -27,7 +28,8 @@ Sample IAM Policy:
       "Action": [
         "iam:PutRolePolicy",
         "iam:CreateRole",
-        "iam:GetRole"
+        "iam:GetRole",
+        "iam:PassRole"
       ],
       "Effect": "Allow",
       "Resource": "*"

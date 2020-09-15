@@ -113,7 +113,8 @@
                     "ec2:DescribeRouteTables",
                     "ec2:DescribeSubnets",
                     "ec2:DescribeVpcs",
-                    "ec2:DetachInternetGateway"
+                    "ec2:DetachInternetGateway",
+                    "iam:PassRole"
                   ], 
                   "Resource": [
                     "*"
