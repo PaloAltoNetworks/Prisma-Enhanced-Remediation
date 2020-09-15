@@ -71,7 +71,7 @@ Check CloudWatchLogs:
 - Choose **View logs in CloudWatch** near the the top right-hand side of the screen.
 - From the new window/tab, click on the latest new log stream.  You should see a test message from Prisma Cloud, sent from your SQS Queue test, similar to the one below.
 
-![Diagram](images/logs_output.jpg)
+![Diagram](../images/logs_output.jpg)
 
 - If you don't see the Prisma Cloud test message, or an error occurred, move to **Further Troubleshooting Lambda**.
 
