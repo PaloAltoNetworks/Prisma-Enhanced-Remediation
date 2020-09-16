@@ -5,6 +5,7 @@
 1. Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
 2. (Optional) Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template.
 3. Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
+4. (Optional) Testing Lambda
 
 ---
 
@@ -75,7 +76,7 @@ Check CloudWatchLogs:
 
 ![Output](../images/logs_output.jpg)
 
-- If you don't see the Prisma Cloud test message, or an error occurred, check out **Further Troubleshooting Lambda**.
+- If you don't see the Prisma Cloud test message, or an error occurred, check out **Testing Lambda**.
 
 Create a new Prisma Cloud Alert rule:
 
@@ -89,10 +90,10 @@ Create a new Prisma Cloud Alert rule:
 - Enable **Amazon SQS** queue and select the integration you created above.
 - Save your new Alert rule.
 
-## Step 4 - (Optional) Further Troubleshooting Lambda
+## Step 4 - (Optional) Testing Lambda
 
 The base remediation package comes with a runbook called **AWS-TEST-001.py** (/runbooks/AWS-TEST-001.py). On the script's comment section, there is a sample SQS message that you can use to test your setup.
-- Go to the AWS Lambda Dashboard. https://us-west-2.console.aws.amazon.com/lambda
+- Go to the [AWS Lambda Dashboard](https://us-west-2.console.aws.amazon.com/lambda).
 - Click on the Function name.
 - On the left side of the **Test** button, click **Select a test event**.
 - Use the sample SQS message, replace `123456789012` account ID with the **Parent** account ID. We can call this event **TargetSelf**.
