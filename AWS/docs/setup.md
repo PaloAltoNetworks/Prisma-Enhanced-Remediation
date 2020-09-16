@@ -100,13 +100,13 @@ The base remediation package comes with a test runbook called [AWS-TEST-001.py](
 - Use the sample SQS message in the comment section of the AWS-TEST-001 runbook. Be sure to replace `123456789012` in the accountId field with your **Parent** AWS account ID. We can call this event **TargetSelf**.
 - Click **Save** then **Test**.
 
-Under **Execution Results** tab, you will see:
+Under the **Execution Results** tab, you will see:
 - `This runbook is invoked by arn:aws:lambda:us-west-2:<parent_account_name>:function:<lambda_function_name>`
 followed by the output of `sts.get_caller_identity()`. You will notice that the `Arn` uses the credential from the lambda role.
 
 For multi account setup, repeat all the above steps, but replace `123456789012` in the accountId field with your **Child** AWS account ID.
 
-Under **Execution Results** tab, you will see:
+Under the **Execution Results** tab, you will see:
 - `This runbook is invoked by arn:aws:lambda:us-west-2:<parent_account_name>:function:<lambda_function_name>`
 followed by the output of `sts.get_caller_identity()`. You will notice that the `Arn` uses assumed role on another account.
 
