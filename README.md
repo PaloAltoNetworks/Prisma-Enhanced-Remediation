@@ -1,5 +1,7 @@
 # Prisma Enhanced Remediation
 
----
+Repo for Prisma Enhanced Remediation using Serverless Functions.
 
-Repo for Prisma Enhanced Remediation Packages.
+## Important Notes
+
+Please keep in mind that this feature is still in **Alpha**. Please do not use this in production environments.
