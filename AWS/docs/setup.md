@@ -92,18 +92,21 @@ Create a new Prisma Cloud Alert rule:
 
 ## Step 4 - (Optional) Testing Lambda
 
-The base remediation package comes with a runbook called **AWS-TEST-001.py** (/runbooks/AWS-TEST-001.py). On the script's comment section, there is a sample SQS message that you can use to test your setup.
+The base remediation package comes with a test runbook called [AWS-TEST-001.py](../lambda_package/runbooks/AWS-TEST-001.py). At the top of the runbook, in the comment section, there is a sample SQS message that you can use to test your setup.
+
 - Go to the [AWS Lambda Dashboard](https://us-west-2.console.aws.amazon.com/lambda).
 - Click on the Function name.
-- On the left side of the **Test** button, click **Select a test event**.
-- Use the sample SQS message, replace `123456789012` account ID with the **Parent** account ID. We can call this event **TargetSelf**.
-- Click **Save** and **Test**.
+- At the top of the screen, just to the left of the **Test** button, click **Select a test event**.
+- Use the sample SQS message in the comment section of the AWS-TEST-001 runbook. Be sure to replace `123456789012` in the accountId field with your **Parent** AWS account ID. We can call this event **TargetSelf**.
+- Click **Save** then **Test**.
 
-Under **Log Output** Section, you will see:
+Under **Execution Results** tab, you will see:
 - `This runbook is invoked by arn:aws:lambda:us-west-2:<parent_account_name>:function:<lambda_function_name>`
 followed by the output of `sts.get_caller_identity()`. You will notice that the `Arn` uses the credential from the lambda role.
 
-For multi account setup, repeat all the steps, but specify the **Child/Target** account ID. Under **Log Output** Section, you will see:
+For multi account setup, repeat all the above steps, but replace `123456789012` in the accountId field with your **Child** AWS account ID.
+
+Under **Execution Results** tab, you will see:
 - `This runbook is invoked by arn:aws:lambda:us-west-2:<parent_account_name>:function:<lambda_function_name>`
 followed by the output of `sts.get_caller_identity()`. You will notice that the `Arn` uses assumed role on another account.
 
