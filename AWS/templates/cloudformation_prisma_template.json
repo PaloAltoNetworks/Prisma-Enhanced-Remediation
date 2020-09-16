@@ -31,13 +31,13 @@
 
   "Parameters": {
     "SourceCodeBucket": {
-      "Default": "redlock-public", 
+      "Default": "prisma-lambda-remediation", 
       "MinLength": "4", 
       "Type": "String", 
       "Description": "Specify the S3Bucket for Lambda source code."
     }, 
     "SourceCodeKeyPath": {
-      "Default": "lambda-remediation/aws/lambda/PrismaRemediate-2020-09-02.zip",
+      "Default": "lambda/PrismaRemediate-2020-09-02.zip",
       "MinLength": "4", 
       "Type": "String", 
       "Description": "Specify the S3 Path for Lambda source code."
