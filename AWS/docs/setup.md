@@ -2,9 +2,10 @@
 
 ## Overview
 
-- Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
-- (Optional) Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template.
-- Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
+1. Build the Lambda remediation infrastructure using a CloudFormation template in your Parent AWS account.
+2. (Optional) Create an IAM Role and Policy in target (Child) AWS accounts using a CloudFormation template.
+3. Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
+4. (Optional) Testing Lambda
 
 ---
 
@@ -51,6 +52,8 @@ You will need to get the **PrismaRemediationSQSQueue** URL from the Output secti
 - Select the **Outputs** tab.
 - Take note of the **PrismaRemediationSQSQueue** URL.
 
+![Output](../images/cfn_output.jpg)
+
 Create a new Prisma Cloud Integration:
 
 - Login to the Prisma Cloud console.
@@ -58,7 +61,22 @@ Create a new Prisma Cloud Integration:
 - Choose **Integrations**.
 - Near the top of the window, click **Add new**.
 - Fill out the **Integration name** and **Queue URL** fields, then click Next.  Use the SQS Queue URL from the Output of your CloudFormation stack.
-- Click **Test**, then Save.
+- Click **Test**. You should receive a Success message. If not, double check your URL.
+- **Save** your new integration.
+
+At this point, the remediation infrastructure setup is complete.  Let's check...
+
+Check CloudWatchLogs:
+
+- Go to the [AWS Lambda Dashboard](https://us-west-2.console.aws.amazon.com/lambda).
+- Click on your Function name.
+- Near the top of the next screen, select the **Monitoring** tab.
+- Choose **View logs in CloudWatch** near the the top right-hand side of the screen.
+- From the new window/tab, click on the latest new log stream.  You should see a test message from Prisma Cloud, sent from your SQS Queue test, similar to the one below.
+
+![Output](../images/logs_output.jpg)
+
+- If you don't see the Prisma Cloud test message, or an error occurred, check out **Testing Lambda**.
 
 Create a new Prisma Cloud Alert rule:
 
@@ -71,3 +89,24 @@ Create a new Prisma Cloud Alert rule:
 - Choose the Policies you'd like to remediate, then **Next**.
 - Enable **Amazon SQS** queue and select the integration you created above.
 - Save your new Alert rule.
+
+## Step 4 - (Optional) Testing Lambda
+
+The base remediation package comes with a test runbook called [AWS-TEST-001.py](../lambda_package/runbooks/AWS-TEST-001.py). At the top of the runbook, in the comment section, there is a sample SQS message that you can use to test your setup.
+
+- Go to the [AWS Lambda Dashboard](https://us-west-2.console.aws.amazon.com/lambda).
+- Click on the Function name.
+- At the top of the screen, just to the left of the **Test** button, click **Select a test event**.
+- Use the sample SQS message in the comment section of the AWS-TEST-001 runbook. Be sure to replace `123456789012` in the accountId field with your **Parent** AWS account ID. We can call this event **TargetSelf**.
+- Click **Save** then **Test**.
+
+Under the **Execution Results** tab, you will see:
+- `This runbook is invoked by arn:aws:lambda:us-west-2:<parent_account_name>:function:<lambda_function_name>`
+followed by the output of `sts.get_caller_identity()`. You will notice that the `Arn` uses the credential from the lambda role.
+
+For multi account setup, repeat all the above steps, but replace `123456789012` in the accountId field with your **Child** AWS account ID.
+
+Under the **Execution Results** tab, you will see:
+- `This runbook is invoked by arn:aws:lambda:us-west-2:<parent_account_name>:function:<lambda_function_name>`
+followed by the output of `sts.get_caller_identity()`. You will notice that the `Arn` uses assumed role on another account.
+

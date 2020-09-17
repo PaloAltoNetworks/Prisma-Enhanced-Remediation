@@ -46,7 +46,8 @@ runbook_lookup = {
     '43c42760-5283-4bc4-ac43-a80e58c4139f' : 'AWS-SSS-008',
     '4daa435b-fa46-457a-9359-6a4b4a43a442' : 'AWS-SSS-009',
     '7913fcbf-b679-5aac-d979-1b6817becb22' : 'AWS-SSS-014',
-    '49f4760d-c951-40e4-bfe1-08acaa17672a' : 'AWS-VPC-020'
+    '49f4760d-c951-40e4-bfe1-08acaa17672a' : 'AWS-VPC-020',
+    '11111111-1111-1111-1111-111111111111' : 'AWS-TEST-001'
 }
 
 
