@@ -57,7 +57,7 @@ def remediate(session, alert, lambda_context):
   """
 
   arn      = alert['resource_id']
-  elb_name = arn.split('/')[1]
+  elb_name = arn.split('/')[2]
   region   = alert['region']
 
   elbv2 = session.client('elbv2', region_name=region)
@@ -229,6 +229,27 @@ class BucketTemplate():
                    },
                    'Action': 's3:PutObject',
                    'Resource': 'arn:aws:s3:::' + bucket_name + '/*' + '/AWSLogs/' + account_id + '/*'
+                 },
+                 {
+                   'Effect': 'Allow',
+                   'Principal': {
+                   'Service': 'delivery.logs.amazonaws.com'
+                   },
+                   'Action': 's3:PutObject',
+                   'Resource': 'arn:aws:s3:::' + bucket_name + '/*' + '/AWSLogs/' + account_id + '/*',
+                   'Condition': {
+                     'StringEquals': {
+                       's3:x-amz-acl': 'bucket-owner-full-control'
+                     }
+                   }
+                 },
+                 {
+                   'Effect': 'Allow',
+                   'Principal': {
+                   'Service': 'delivery.logs.amazonaws.com'
+                   },
+                   'Action': 's3:GetBucketAcl',
+                   'Resource': 'arn:aws:s3:::' + bucket_name
                  }
                ]
              }
