@@ -56,7 +56,8 @@ def remediate(session, alert, lambda_context):
   Main Function invoked by index.py
   """
 
-  elb_name = alert['resource_id']
+  arn      = alert['resource_id']
+  elb_name = arn.split('/')[1]
   region   = alert['region']
 
   elbv2 = session.client('elbv2', region_name=region)
