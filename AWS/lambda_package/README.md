@@ -6,16 +6,11 @@
  AWS-CFM-003 | Enable CloudFormation Stack termination protection. | | n/a
  **CloudTrail**
  AWS-CLT-002 | Encrypt CloudTrail S3 logs with a KMS Customer Managed Key (CMK). | 2.7 | c2b84f89-7ec8-473e-a6af-404feeeb96c5
- AWS-CLT-004 | Integrate CloudTrail with CloudWatch Logs. Creates (if needed) the necessary IAM Policy and CloudWatch Logs group. | 2.4 | 962e0daa-3c2d-4d79-9a5f-e0bf8fd4bb3b
+ AWS-CLT-004 | Integrate CloudTrail with CloudWatch Logs. Creates (if needed) the necessary IAM Policy and CloudWatch Logs group. | 2.4 | 0d07ac51-fbfe-44fe-8edb-3314c9995ee0
  AWS-CLT-005 | Enable CloudTrail log file validation. | 2.2 | 38e3d3cf-b694-46ec-8bd2-8f02194b5040
  AWS-CLT-006 | Remove CloudTrail S3 bucket ACL Public policy. | 2.3 | a5fe47e1-54f3-47e1-a2a3-deedfb2f70b2
  **Config**
  AWS-CONFIG-001 |  Enable Config. Creates (if needed) the necessary IAM Role and S3 Bucket/ Policy. | 2.5 | n/a
- **ELB**
- AWS-ELB-009 | Enable ELB (Classic) Connection Draining. | | 7eb7f61e-df59-42d4-8236-7d012f278fa6
- AWS-ELB-012 | Enable ELB (Classic) Cross-Zone Load Balancing. | | 551ee7ba-edb6-468e-a018-8774da9b1e85
- AWS-ELB-013 | Enable ELB (Classic) Access Logs. Creates (if needed) an ELB logs S3 bucket for the region. | | b675c604-e886-43aa-a60f-a9ad1f3742d3
- AWS-ELB-015 | Enable Application ELB (elbv2) Access Logs. Creates (if needed) an ELB logs S3 bucket for the region. | | f2a2bcf1-2966-4cb5-9230-bd39c9903a02
  **EC2**
  AWS-EC2-001 | Create an EBS snapshot if a snapshot doesn't exist, or is older than 15 days. | | n/a
  AWS-EC2-002 | Remove EC2 security group rules containing global access to TCP port 22 (SSH). | 4.1 | 617b9138-584b-4e8e-ad15-7fbabafbed1a
@@ -36,6 +31,11 @@
  AWS-EC2-038 | Remove All rules from the **default** EC2 security group. | 4.3 | 2378dbf4-b104-4bda-9b05-7417affbba3f
  AWS-EC2-039 | Remove EC2 security group rules with Global access on all ports. | | 566686e8-0581-4df5-ae22-5a901ed37b58
  AWS-EC2-042 | Set Public EBS snapshot to Private. | | 7c714cb4-3d47-4c32-98d4-c13f92ce4ec5
+ **ELB**
+ AWS-ELB-009 | Enable ELB (Classic) Connection Draining. | | 7eb7f61e-df59-42d4-8236-7d012f278fa6
+ AWS-ELB-012 | Enable ELB (Classic) Cross-Zone Load Balancing. | | 551ee7ba-edb6-468e-a018-8774da9b1e85
+ AWS-ELB-013 | Enable ELB (Classic) Access Logs. Creates (if needed) an ELB logs S3 bucket for the region. | | b675c604-e886-43aa-a60f-a9ad1f3742d3
+ AWS-ELB-015 | Enable Application ELB (elbv2) Access Logs. Creates (if needed) an ELB logs S3 bucket for the region. | | f2a2bcf1-2966-4cb5-9230-bd39c9903a02
  **IAM**
  AWS-IAM-002 | Enforce AWS account best practices password policy. | 1.5 - 1.11
  AWS-IAM-015 | Deactivate unused IAM access keys. | 1.3 | 7ca5af2c-d18d-4004-9ad4-9c1fbfcab218
