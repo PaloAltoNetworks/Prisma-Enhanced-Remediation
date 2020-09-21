@@ -47,13 +47,21 @@ def remediate(session, alert, lambda_context):
   Main Function invoked by index.py
   """
 
-  instance_id = alert['resource_id']
-  region = alert['region']
+  resource_id = alert['resource_id']
+  region      = alert['region']
 
   rds = session.client('rds', region_name=region)
 
   try:
-    db_instance = rds.describe_db_instances(DBInstanceIdentifier = instance_id)['DBInstances']
+    db_instance = rds.describe_db_instances(
+      Filters = [
+        {
+          'Name': 'dbi-resource-id',
+          'Values': [ resource_id ]
+        }
+      ]
+    )['DBInstances']
+
   except ClientError as e:
     print(e.response['Error']['Message'])
     return
@@ -66,6 +74,8 @@ def remediate(session, alert, lambda_context):
   else:
 
     if multi_az != True:
+
+      instance_id = db_instance[0]['DBInstanceIdentifier']
 
       try:
         result = rds.modify_db_instance(
