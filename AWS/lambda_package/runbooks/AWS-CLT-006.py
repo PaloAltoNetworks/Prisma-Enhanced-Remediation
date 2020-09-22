@@ -11,7 +11,6 @@ may aid an adversary in identifying weaknesses in the affected account's use or 
 
 Required Permissions:
 
-- cloudtrail:DescribeTrails
 - s3:GetBucketAcl
 - s3:PutBucketAcl
 
@@ -20,14 +19,6 @@ Sample IAM Policy:
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
-      "Sid": "CloudTrailPermissions",
-      "Action": [
-        "cloudtrail:DescribeTrails"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    },
     {
       "Sid": "S3Permissions",
       "Action": [
@@ -50,23 +41,10 @@ def remediate(session, alert, lambda_context):
   Main Function invoked by index.py
   """
 
-  trail_name  = alert['resource_id']
+  bucket_name = alert['resource_id']
   region      = alert['region']
 
-  clt = session.client('cloudtrail', region_name=region)
   s3  = session.client('s3', region_name=region)
-
-  try:
-    trail = clt.describe_trails(trailNameList=[ trail_name ], includeShadowTrails=False)['trailList']
-  except ClientError as e:
-    print(e.response['Error']['Message'])
-    return
-
-  try:
-    bucket_name = trail[0]['S3BucketName']
-  except (IndexError, KeyError):
-    print('Could not find S3 bucket for Trail {}.'.format(trail_name))
-    return
 
   try:
     bucket_acl = s3.get_bucket_acl(Bucket=bucket_name)
@@ -98,12 +76,12 @@ def remediate(session, alert, lambda_context):
 
   # Remediate
   if public == True:
-    result = remove_public_acl(s3, bucket_name, new_bucket_acl, trail_name)
+    result = remove_public_acl(s3, bucket_name, new_bucket_acl)
     
   return
 
 
-def remove_public_acl(s3, bucket_name, new_bucket_acl, trail_name):
+def remove_public_acl(s3, bucket_name, new_bucket_acl):
   """
   Remove S3 Bucket Public ACL Policy
   """
@@ -116,7 +94,7 @@ def remove_public_acl(s3, bucket_name, new_bucket_acl, trail_name):
   except ClientError as e:
     print(e.response['Error']['Message'])
   else:
-    print('S3 bucket {} ACL policy, removed public access for Trail {}.'.format(bucket_name, trail_name))
+    print('Removed public ACL policy for CloudTrail S3 bucket {}.'.format(bucket_name))
 
   return
 
