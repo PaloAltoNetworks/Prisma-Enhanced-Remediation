@@ -13,7 +13,7 @@ runbook_lookup = {
     '0d07ac51-fbfe-44fe-8edb-3314c9995ee0' : 'AWS-CLT-004',
     '962e0daa-3c2d-4d79-9a5f-e0bf8fd4bb3b' : 'AWS-CLT-004',
     '38e3d3cf-b694-46ec-8bd2-8f02194b5040' : 'AWS-CLT-005',
-    'a5fe47e1-54f3-47e1-a2a3-deedfb2f70b2' : 'AWS-CLT-006',
+    'b76ad441-e715-4fd0-bbc3-cd3b2bee34bf' : 'AWS-CLT-006',
     '617b9138-584b-4e8e-ad15-7fbabafbed1a' : 'AWS-EC2-002-old',
     '519456f2-f9eb-407b-b32d-064f1ac7f0ca' : 'AWS-EC2-003-old',
     'b82f90ce-ed8b-4b49-970c-2268b0a6c2e5' : 'AWS-EC2-004-old',

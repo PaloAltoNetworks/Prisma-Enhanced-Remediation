@@ -8,7 +8,7 @@
  AWS-CLT-002 | Encrypt CloudTrail S3 logs with a KMS Customer Managed Key (CMK). | 2.7 | c2b84f89-7ec8-473e-a6af-404feeeb96c5
  AWS-CLT-004 | Integrate CloudTrail with CloudWatch Logs. Creates (if needed) the necessary IAM Policy and CloudWatch Logs group. | 2.4 | 0d07ac51-fbfe-44fe-8edb-3314c9995ee0
  AWS-CLT-005 | Enable CloudTrail log file validation. | 2.2 | 38e3d3cf-b694-46ec-8bd2-8f02194b5040
- AWS-CLT-006 | Remove CloudTrail S3 bucket ACL Public policy. | 2.3 | a5fe47e1-54f3-47e1-a2a3-deedfb2f70b2
+ AWS-CLT-006 | Remove CloudTrail S3 bucket ACL Public policy. | 2.3 | b76ad441-e715-4fd0-bbc3-cd3b2bee34bf
  **Config**
  AWS-CONFIG-001 |  Enable Config. Creates (if needed) the necessary IAM Role and S3 Bucket/ Policy. | 2.5 | n/a
  **EC2**
