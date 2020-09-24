@@ -48,22 +48,21 @@ Remediation result:
     ]
 }
 
-
-
 """
 
 def remediate(session, alert, lambda_context):
-    print('Remediation for AWS:Iam-016 started.')
+
+    resource_id = alert['resource_id']
 
     new_policy = "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"VisualEditor0\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"sts:getCallerIdentity\"\n            ],\n            \"Resource\": \"*\"\n        }\n    ]\n}"
-    
 
     client = session.client('iam')
+
     print('Modifying policy: {}'.format(alert['resource_id']))
     
     try:
         resp = client.create_policy_version(
-            PolicyArn = alert['metadata']['arn'],
+            PolicyArn = resource_id,
             PolicyDocument = new_policy,
             SetAsDefault = True
             )
@@ -71,5 +70,4 @@ def remediate(session, alert, lambda_context):
     except Exception as e:
         raise e
     
-    print('Policy Update complete')
     return 0
