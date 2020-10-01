@@ -130,4 +130,6 @@ Updates to this GitHub repository are periodically packaged into releases and ho
 
 We built this package as a starting point for our customers in building their custom auto-remediation solutions. Feel free to examine any of the out-of-the-box runbooks and use them as examples to guide you in building the perfect auto-remediation solution that fits your needs.
 
+To better understand the how the Lambda package parses alerts from Prisma Cloud, check out the [AWS Lambda remediation overview](../README.md) for a detailed breakdown and explanation. This resource also includes info on how to start creating your own custom runbooks.
+
 If you build any runbooks that you think may help the rest of the community, feel free to make a pull request! This project is intentionally open-source as we want this to be community-driven. Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md) document for more details on how to contribute.
