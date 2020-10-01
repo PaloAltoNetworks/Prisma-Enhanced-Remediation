@@ -1,11 +1,12 @@
 """
 Remediate Prisma Policy:
 
-AWS:EC2-100 Global Admin Port Access Detected
+AWS:EC2-003 Global Admin Port Access - Telnet (TCP Port 23) Detected
 
 Description:
 
-Global permission to access the well-known services should not be allowed in a security group.
+Global permission to access the well-known services TCP port 23 (Telnet) should not be allowed in a
+security group.
 
 **Note: Remediation will be executed if the well-known service is found within a port range.
 
@@ -44,13 +45,13 @@ from botocore.exceptions import ClientError
 # Example
 #   admin_port_list = [ 'tcp-22', 'tcp-23', 'tcp-3389' ]
 #
-admin_port_list  = [ 'tcp-20', 'tcp-21', 'tcp-25', 'tcp-53', 'tcp-3306', 'tcp-5432', 'tcp-1433', 'tcp-4333', 'tcp-5500', 'tcp-5900' ]
+admin_port_list  = [ 'tcp-23' ]
 global_cidr_list = [ '0.0.0.0/0', '::/0' ]
 
 
 def remediate(session, alert, lambda_context):
   """
-  Main Function invoked by index.py
+  Main Function invoked by index_prisma.py
   """
 
   sg_id  = alert['resource_id']

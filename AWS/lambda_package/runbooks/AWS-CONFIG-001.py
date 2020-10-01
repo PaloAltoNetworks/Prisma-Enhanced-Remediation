@@ -67,7 +67,7 @@ from time import sleep
 
 def remediate(session, alert, lambda_context):
   """
-  Main Function invoked by index.py
+  Main Function invoked by index_prisma.py
   """
 
   region = alert['region']

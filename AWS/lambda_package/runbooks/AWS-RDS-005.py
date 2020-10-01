@@ -37,7 +37,7 @@ from botocore.exceptions import ClientError
 
 def remediate(session, alert, lambda_context):
   """
-  Main Function invoked by index.py
+  Main Function invoked by index_prisma.py
   """
 
   resource_id = alert['resource_id']

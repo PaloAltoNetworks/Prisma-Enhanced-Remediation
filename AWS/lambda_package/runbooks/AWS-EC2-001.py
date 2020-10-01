@@ -51,7 +51,7 @@ snapshot_age = 15
 
 def remediate(session, alert, lambda_context):
   """
-  Main Function invoked by index.py
+  Main Function invoked by index_prisma.py
   """
 
   volume_id = alert['resource_id']

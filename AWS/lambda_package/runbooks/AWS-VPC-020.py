@@ -69,7 +69,7 @@ default_policy_name = 'flowlogsPolicy'
 
 def remediate(session, alert, lambda_context):
   """
-  Main Function invoked by index.py
+  Main Function invoked by index_prisma.py
   """
 
   vpc_id = alert['resource_id']

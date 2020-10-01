@@ -26,7 +26,7 @@ during your first contribution to open source can be applied in so many ways,
 you'll wonder what you ever did before you had this knowledge. It's worth
 learning.
 
-[Learn how to make a pull request](https://github.com/PaloAltoNetworks/.github/blob/master/Learn-GitHub.md#learn-how-to-make-a-pull-request)
+[Learn how to make a pull request](Learn-GitHub.md#learn-how-to-make-a-pull-request)
 
 ## Fixing a typo, or a one or two line fix
 

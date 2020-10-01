@@ -8,7 +8,7 @@ Please see the [Setup Guide](docs/setup.md).
 
 ## How it works
 
-The Prisma Cloud platform sends alert messages to an AWS SQS Queue. SQS invokes a lambda function (index.py). The function then calls the appropriate runbook script to remediate the alert(s).
+The Prisma Cloud platform sends alert messages to an AWS SQS Queue. SQS invokes a lambda function (`index_prisma.py`). The function then calls the appropriate runbook script to remediate the alert(s).
 
 The `lambda_package` consists of two main components: `index_prisma.py` and the `runbooks` folder.
 
@@ -78,7 +78,7 @@ from botocore.exceptions import ClientError
 
 def remediate(session, alert, lambda_context):
   """
-  Main Function invoked by index.py
+  Main Function invoked by index_prisma.py
   """
 
   # Data from the alert
