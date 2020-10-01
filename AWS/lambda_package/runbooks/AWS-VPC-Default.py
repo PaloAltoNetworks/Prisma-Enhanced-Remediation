@@ -103,12 +103,12 @@ def remediate(session, alert, lambda_context):
     return
 
   # Do the work..
-  result = delete_igw(ec2, vpc_id)
-  result = delete_subs(ec2, vpc_id)
-  result = delete_rtbs(ec2, vpc_id)
-  result = delete_acls(ec2, vpc_id)
-  result = delete_sgps(ec2, vpc_id)
-  result = delete_vpc(ec2, vpc_id)
+  delete_igw(ec2, vpc_id)
+  delete_subs(ec2, vpc_id)
+  delete_rtbs(ec2, vpc_id)
+  delete_acls(ec2, vpc_id)
+  delete_sgps(ec2, vpc_id)
+  delete_vpc(ec2, vpc_id)
 
   return
 
