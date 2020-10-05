@@ -13,7 +13,7 @@
 
 ## Step 1 - Create Prisma Cloud Remediation Stack
 
-[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-lambda-remediation.s3-us-west-2.amazonaws.com/templates/cloudformation_prisma_template.json)
+[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://redlock-public.s3.amazonaws.com/lambda-remediation/aws/templates/cloudformation_prisma_template.json)
 
 This CloudFormation stack creates the following resources in the Oregon (`us-west-2`) region:
 
@@ -37,7 +37,7 @@ When you created the CloudFormation stack in Step 1, one of the parameters was c
 
 For Multi Account Setup, you will need to create this IAM Role in each Child/Target AWS account by launching the following CloudFormation template:
 
-[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-lambda-remediation.s3-us-west-2.amazonaws.com/templates/cloudformation_role_template.json)
+[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://redlock-public.s3.amazonaws.com/lambda-remediation/aws/templates/cloudformation_role_template.json)
 
 When you get to the **Specify stack details** page, ensure that you replace the `AWSParentAccountId` paramater value to match the [**Parent** account's AWS ID](https://console.aws.amazon.com/billing/home?#/account).
 
@@ -117,14 +117,12 @@ followed by the output of `sts.get_caller_identity()`. You will notice that the 
 
 ## Step 5 - (Optional) Update Out-of-the-Box Runbooks
 
-Updates to this GitHub repository are periodically packaged into releases and hosted by Palo Alto Networks. If a new release is available and you would like to update your Lambda package with the latest out-of-the-box runbooks, do the following:
+Updates to this GitHub repository are periodically packaged into releases and hosted by Palo Alto Networks. If a new release is available ([check here for our releases](../releases); the latest release will always be equivalent to the release with the latest date) and you would like to update your Lambda package with the latest out-of-the-box runbooks, do the following:
 
-1. Check the filename of the latest release by looking at our [releases](../releases) folder. Each release is named after the following format: `PrismaRemediate-YYYY-MM-DD.zip`. Copy this filename down as we'll be using it later.
-2. Go to the [AWS CloudFormation Dashboard](https://us-west-2.console.aws.amazon.com/cloudformation) and select **PrismaRemediation**.
-3. Click **Update**.
-4. Click **Use current template** and choose **Next**.
-5. Replace the **SourceCodeKeyPath** parameter with the latest release's filename, prepended by `lambda/` (e.g. `lambda/PrismaRemediate-2020-09-18.zip`).
-6. Click **Next** twice, check off the acknowledgement at the bottom, then click **Update stack**. Your Lambda package is now updated with the latest runbooks!
+1. Go to the [AWS CloudFormation Dashboard](https://us-west-2.console.aws.amazon.com/cloudformation) and select **PrismaRemediation**.
+2. Click **Update**.
+3. Click **Use current template** and choose **Next** three times.
+4. Check off the acknowledgement at the bottom, then click **Update stack**. Your Lambda package is now updated with the latest runbooks!
 
 ## Step 6 - Create Your Own Custom Lambdas
 
