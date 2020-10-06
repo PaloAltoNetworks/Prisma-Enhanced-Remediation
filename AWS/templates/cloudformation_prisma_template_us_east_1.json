@@ -31,10 +31,10 @@
 
   "Parameters": {
     "SourceCodeBucket": {
-      "Default": "prisma-enhanced-remediation-[region]", 
+      "Default": "prisma-enhanced-remediation-us-east-1", 
       "MinLength": "4", 
       "Type": "String", 
-      "Description": "Specify the S3 bucket for Lambda source code. Replace '[region]' with the region you want to set up the Lambda in, e.g. 'prisma-enhanced-remediation-us-west-2'."
+      "Description": "Specify the S3 bucket for Lambda source code."
     }, 
     "SourceCodeKeyPath": {
       "Default": "aws/lambda/PrismaRemediate-latest.zip",
