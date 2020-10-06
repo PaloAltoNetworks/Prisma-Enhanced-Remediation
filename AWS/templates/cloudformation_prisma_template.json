@@ -4,7 +4,7 @@
 
   "Outputs": {
     "PrismaRemediationLambda": {
-      "Description": "Lambda function which will run the remediation runbooks.", 
+      "Description": "The Lambda function that will run the remediation runbooks.", 
       "Value": {
         "Ref": "LambdaFunction"
       }
@@ -16,7 +16,7 @@
       }
     }, 
     "PrismaRemediationParentId": {
-      "Description" : "Parent AWS Account Id.",
+      "Description" : "Parent AWS Account ID.",
       "Value": {
         "Ref": "AWS::AccountId"
       }
@@ -31,16 +31,16 @@
 
   "Parameters": {
     "SourceCodeBucket": {
-      "Default": "redlock-public", 
+      "Default": "prisma-enhanced-remediation-[region]", 
       "MinLength": "4", 
       "Type": "String", 
-      "Description": "Specify the S3Bucket for Lambda source code."
+      "Description": "Specify the S3 bucket for Lambda source code. Replace '[region]' with the region you want to set up the Lambda in, e.g. 'prisma-enhanced-remediation-us-west-2'."
     }, 
     "SourceCodeKeyPath": {
-      "Default": "lambda/PrismaRemediate-latest.zip",
+      "Default": "aws/lambda/PrismaRemediate-latest.zip",
       "MinLength": "4", 
       "Type": "String", 
-      "Description": "Specify the S3 Path for Lambda source code."
+      "Description": "Specify the S3 path for the Lambda source code."
     },
     "CrossAccountRoleName": {
       "Default": "CrossAccountRemediationRole",
