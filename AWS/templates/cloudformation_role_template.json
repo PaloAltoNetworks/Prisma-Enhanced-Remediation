@@ -24,7 +24,7 @@
       "MinLength": "12",
       "MaxLength": "12",
       "Type": "String",
-      "Description": "The parent remediation AWS Account Id."
+      "Description": "The parent remediation AWS Account ID."
     }
   }, 
 

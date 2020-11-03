@@ -13,14 +13,9 @@
 
 ## Step 1 - Create Prisma Cloud Remediation Stack
 
-Choose the region you'd like to deploy the Lambda function and click the **Launch Stack** button:
+Click the **Launch Stack** button and change the region on the upper right hand corner to the one you want to deploy your Lambda to:
 
-| Region                      |                                                                                                                                                                          Stack                                                                                                                                                                           |
-| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| `us-west-1` (N. California) | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-enhanced-remediation-us-west-1.s3.amazonaws.com/aws/templates/cloudformation_prisma_template_us_west_1.json) |
-| `us-west-2` (Oregon)        | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-enhanced-remediation-us-west-2.s3.amazonaws.com/aws/templates/cloudformation_prisma_template_us_west_2.json) |
-| `us-east-1` (N. Virginia)   | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-enhanced-remediation-us-east-1.s3.amazonaws.com/aws/templates/cloudformation_prisma_template_us_east_1.json) |
-| `us-east-2` (Ohio)          | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-enhanced-remediation-us-east-2.s3.amazonaws.com/aws/templates/cloudformation_prisma_template_us_east_2.json) |
+[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/new?stackName=PrismaRemediation&templateURL=https://prisma-enhanced-remediation-us-west-1.s3.amazonaws.com/aws/templates/cloudformation_prisma_template.json)
 
 This CloudFormation stack creates the following resources in the chosen region:
 
@@ -42,14 +37,9 @@ The Parent account will need permission to change/modify AWS resources in your C
 
 When you created the CloudFormation stack in Step 1, one of the parameters was called `CrossAccountRoleName` (The default value of that parameter is `CrossAccountRemediationRole`). Use the same name when using the CloudFormation template below to create the IAM Role in your Child account(s).
 
-For Multi Account Setup, you will need to create this IAM Role in each Child/Target AWS account by launching the following CloudFormation template:
+For Multi Account Setup, you will need to create this IAM Role in each Child/Target AWS account by launching the following CloudFormation template (in AWS, choose your region on the upper right hand corner):
 
-| Region                      |                                                                                                                                                                         Stack                                                                                                                                                                         |
-| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| `us-west-1` (N. California) | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-enhanced-remediation-us-west-1.s3.amazonaws.com/aws/templates/cloudformation_role_template.json) |
-| `us-west-2` (Oregon)        | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-enhanced-remediation-us-west-2.s3.amazonaws.com/aws/templates/cloudformation_role_template.json) |
-| `us-east-1` (N. Virginia)   | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-enhanced-remediation-us-east-1.s3.amazonaws.com/aws/templates/cloudformation_role_template.json) |
-| `us-east-2` (Ohio)          | [![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-enhanced-remediation-us-east-2.s3.amazonaws.com/aws/templates/cloudformation_role_template.json) |
+[![Launch Button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/new?stackName=PrismaChildRemediationRole&templateURL=https://prisma-enhanced-remediation-us-west-1.s3.amazonaws.com/aws/templates/cloudformation_role_template.json)
 
 When you get to the **Specify stack details** page, ensure that you replace the `AWSParentAccountId` paramater value to match the [**Parent** account's AWS ID](https://console.aws.amazon.com/billing/home?#/account).
 
