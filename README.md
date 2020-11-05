@@ -2,10 +2,6 @@
 
 Create custom auto-remediation solutions for Prisma Cloud using serverless functions in the cloud.
 
-## Important Note
-
-Please keep in mind that this feature is still in **Alpha**. Please do **not** use this in production environments!
-
 ## Summary
 
 - [Summary](#summary)
