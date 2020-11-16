@@ -7,7 +7,8 @@
 3. Integrate Prisma Cloud to send alerts to the Lambda remediation infrastructure.
 4. (Optional) Test the Lambda
 5. (Optional) Update out-of-the-box runbooks
-6. Create your own custom Lambdas
+6. (Optional) Edit IAM permissions
+7. Create your own custom Lambdas
 
 ---
 
@@ -126,10 +127,31 @@ Updates to this GitHub repository are periodically packaged into releases and ho
 3. Click **Use current template** and choose **Next** three times.
 4. Check off the acknowledgement at the bottom, then click **Update stack**. Your Lambda package is now updated with the latest runbooks!
 
-## Step 6 - Create Your Own Custom Lambdas
+## Step 6 - (Optional) Edit IAM Permissions
+
+If there are any runbooks that are either overpermissive or don't suit your environment, you can remove them after installation.
+
+1. Check the [runbook details](../lambda_package/runbook_details.md) page and see what IAM permissions each runbook requires. Identify the ones you do not need.
+2. Go to the [AWS IAM Dashboard](https://console.aws.amazon.com/iam/home?region=us-west-2#/home) and select **Roles**.
+3. Search for `PrismaRemediation`. The role name should be called `PrismaRemediation-LambdaRole-[random characters]`.
+4. Under the **Permissions** tab, find the policy called `PrismaRemediation` and click **Edit policy**. These are the permissions you will modify:
+![AWS Lambda's IAM permissions](../images/lambda_iam_role.png)
+5. Remove any necessary IAM permissions using either the Visual editor or the JSON itself, then click **Review policy**.
+6. Review the resulting policy and click **Save changes**.
+7. If you have child accounts whose IAM permissions you would like to modify, repeat steps 1-6 but search for the role called `CrossAccountRemediationRole` instead.
+
+### Editing IAM permissions for a large number of accounts
+
+If you have many child accounts, it will be difficult to modify the IAM policies manually for each account. If this is the case for you, we recommend downloading the CloudFormation templates directly (download the parent template [here](../templates/cloudformation_prisma_template.json) and the child template [here](../templates/cloudformation_role_template.json)), modifying them using a text editor, and then deploying those instead.
+
+After you press the **Launch Stack** buttons above, choose **Upload a template file** and choose the respective modified CloudFormation template. Doing this will deploy everything identically as before, but with your IAM permission modifications.
+
+## Step 7 - Create Your Own Custom Lambdas
 
 We built this package as a starting point for our customers in building their custom auto-remediation solutions. Feel free to examine any of the out-of-the-box runbooks and use them as examples to guide you in building the perfect auto-remediation solution that fits your needs.
 
 To better understand the how the Lambda package parses alerts from Prisma Cloud, check out the [AWS Lambda remediation overview](../README.md) for a detailed breakdown and explanation. This resource also includes info on how to start creating your own custom runbooks.
 
 If you build any runbooks that you think may help the rest of the community, feel free to make a pull request! This project is intentionally open-source as we want this to be community-driven. Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md) document for more details on how to contribute.
+
+Community-created runbooks, once reviewed by our developer team, will be added to this repo in a separate folder. They will **not** be included in our release packages and will instead have to be installed manually. This is a security measure as there may always be risk in using third-party code.

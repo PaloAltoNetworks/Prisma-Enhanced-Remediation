@@ -1,4 +1,4 @@
-# Prisma Cloud AWS Lambda Remediation
+# Prisma Cloud AWS Serverless Auto-remediation Overview
 
 ![Diagram](images/prisma_lambda_diagram.jpg)
 

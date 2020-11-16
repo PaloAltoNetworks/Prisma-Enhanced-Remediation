@@ -23,7 +23,7 @@ Serverless functions is a service offered by Cloud Service Providers (CSPs) that
 
 Serverless functions are a simple way to create custom auto-remediation solutions based on Prisma Cloud alerts. Using Prisma Cloud's built-in integrations to CSPs (e.g. AWS SQS), you can quickly and easily remediate misconfigurations in your cloud environment with the flexibility of a full-fledged coding environment.
 
-For example, instead of automatically deleting an insecure AWS S3 bucket, you could create a backup of it before deletion; perhaps you want to send a Slack notification after enabling VPC flow logs. Both of these are possible using serverless auto-remediation. This repo gives you the starting point to build your own specific auto-remediation capabilities.
+For example, on top of automatically blocking public access to an insecure AWS S3 bucket, you could also create a Jira ticket notifying your DevOps team with more details; perhaps you want to send a Slack notification after enabling VPC flow logs. Both of these are possible using serverless auto-remediation. Our GitHub repo gives you the starting point to build your own custom auto-remediation capabilities.
 
 ## Getting Started
 
@@ -31,6 +31,10 @@ There are different setup instructions depending on your CSP (Cloud Service Prov
 
 - [Amazon Web Services (AWS) Setup Guide](AWS/docs/setup.md)
   - [Out-of-the-box runbooks and associated Prisma Cloud policies](AWS/lambda_package/README.md)
+  - [Individual runbook details and IAM permissions used](AWS/lambda_package/runbook_details.md)
+  - [Custom runbook development guide](AWS/docs/custom_runbooks_guide.md)
+- Microsoft Azure Setup Guide (In Development)
+- Google Cloud Platform (GCP) Setup Guide (Coming soon!)
 
 ## Prerequisites
 
