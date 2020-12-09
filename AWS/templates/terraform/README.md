@@ -2,7 +2,7 @@
 
 **Authentication**
 
-AWS [Authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+AWS [Authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication)
 
 Recommended:
 ```
@@ -34,7 +34,7 @@ Create an execution plan.
 terraform plan -var-file="prisma.tfvars"
 ```
 
-**Build The Infrastructure**
+**Infrastructure**
 
 Apply your changes and build the Prisma AWS remediation environment.
 ```
