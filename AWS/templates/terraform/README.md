@@ -1,7 +1,8 @@
 ## Using Terraform
 
-**AWS Authentication**
-[Authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+**Authentication**
+
+AWS [Authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 Recommended:
 ```
@@ -12,8 +13,7 @@ $ export AWS_DEFAULT_REGION="us-west-2"
 
 **Configuration**
 
-Setup your backend configuration.
-[Backend Configuration](https://www.terraform.io/docs/backends/config.html#backend-configuration-file)
+Setup your [Backend Configuration](https://www.terraform.io/docs/backends/config.html#backend-configuration-file)
 
 Initialize your working directory containing Terraform configuration files.
 ```
@@ -33,6 +33,8 @@ Create an execution plan.
 ```
 terraform plan -var-file="prisma.tfvars"
 ```
+
+**Build The Infrastructure**
 
 Apply your changes and build the Prisma AWS remediation environment.
 ```
