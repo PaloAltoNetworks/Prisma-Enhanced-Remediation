@@ -57,6 +57,7 @@ Click on a runbook to see the code as well as the IAM permissions required to ru
   - [AWS S3 bucket has global view ACL permissions enabled](#aws-s3-bucket-has-global-view-acl-permissions-enabled)
   - [AWS Access logging not enabled on S3 buckets](#aws-access-logging-not-enabled-on-s3-buckets)
   - [AWS S3 buckets do not have server side encryption](#aws-s3-buckets-do-not-have-server-side-encryption)
+  - [AWS S3 buckets are accessible to public](#aws-s3-buckets-are-accessible-to-public)
 - [VPC Runbooks](#vpc-runbooks)
   - [Release unassociated (unused) Elastic IP addresses](#release-unassociated-unused-elastic-ip-addresses)
   - [AWS VPC has flow logs disabled](#aws-vpc-has-flow-logs-disabled)
@@ -577,6 +578,16 @@ Click on a runbook to see the code as well as the IAM permissions required to ru
 - Runbook summary: Enables S3 Server-Side Encryption.
 - Required IAM permissions:
   - `s3:PutEncryptionConfiguration`
+- CIS section: N/A
+- Caveats: N/A
+
+### AWS S3 buckets are accessible to public
+
+- Script name: [`PC-AWS-S3-29.py`](runbooks/PC-AWS-S3-29.py)
+- Prisma Cloud policy descriptor: `PC-AWS-S3-29`
+- Runbook summary: Removes S3 bucket public access at the bucket level.
+- Required IAM permissions:
+  - `s3:PutBucketPublicAccessBlock`
 - CIS section: N/A
 - Caveats: N/A
 

@@ -98,6 +98,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
             "elasticloadbalancing:DescribeLoadBalancerAttributes",
             "elasticloadbalancing:ModifyLoadBalancerAttributes",
             "s3:PutObject",
+            "s3:PutBucketPublicAccessBlock",
             "elasticloadbalancing:DescribeLoadBalancers",
             "iam:UpdateAccountPasswordPolicy",
             "iam:GetAccessKeyLastUsed",
