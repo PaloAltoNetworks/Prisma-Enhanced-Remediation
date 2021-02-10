@@ -47,6 +47,7 @@ runbook_lookup = {
     '43c42760-5283-4bc4-ac43-a80e58c4139f' : 'AWS-SSS-008',
     '4daa435b-fa46-457a-9359-6a4b4a43a442' : 'AWS-SSS-009',
     '7913fcbf-b679-5aac-d979-1b6817becb22' : 'AWS-SSS-014',
+    '630d3779-d932-4fbf-9cce-6e8d793c6916' : 'PC-AWS-S3-29',
     '49f4760d-c951-40e4-bfe1-08acaa17672a' : 'AWS-VPC-020',
     '11111111-1111-1111-1111-111111111111' : 'AWS-TEST-001'
 }
@@ -160,7 +161,7 @@ def lambda_handler(event, context):
             try:
                 runbook = import_module('runbooks.' + parsed_alert['runbook_id'])
             except Exception as e:
-                message = 'Cannot import/find runbook for {0} ({1}). Error: {2}'.format(parsed_alert['runbook_id'], parsed_alert['signature_id'], str(e))
+                message = 'Cannot import/find runbook for {0} ({1}). Error: {2}'.format(parsed_alert['runbook_id'], parsed_alert['policy_id'], str(e))
                 raise Exception(message)
 
             # If the resource is on another account, get the temporary credentials
