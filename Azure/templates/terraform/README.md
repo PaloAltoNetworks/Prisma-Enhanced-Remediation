@@ -1,4 +1,4 @@
-## Using Terraform (Under Construction)
+## Using Terraform
 
 **Authentication**
 
@@ -8,14 +8,43 @@ Recommended:
 
 **Configuration**
 
+```
+az login
+az account list
 
-Initialize your working directory containing Terraform configuration files.
+az account set --subscription="SUBSCRIPTION_ID"
+```
+
+```
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+```
+
+Initialize your working directory containing the Terraform configuration files.
 ```
 terraform init -backend-config="prisma.config"
 ```
 
-Update the variables as needed.
+Update your variables as needed.
 
+```
+location        = "East US"
+subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+tenant_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
 
 Create an execution plan.
 ```
@@ -24,27 +53,11 @@ terraform plan -var-file="prisma.tfvars"
 
 **Infrastructure**
 
-Apply your changes and build the Prisma AWS remediation environment.
+Apply your changes and build the Prisma Azure remediation environment.
 ```
 terraform apply -var-file="prisma.tfvars"
 ```
 
-**Testing from your local environment**
-
-Setup:
-```
-export AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
-export AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-terraform init -backend-config="prisma.config"
-terraform plan -var-file="prisma.tfvars"
-terraform apply -var-file="prisma.tfvars"
-```
-
-Tear down:
-```
-terraform destroy
-```
 
 [Terraform Language Documentation](https://www.terraform.io/docs/configuration/index.html)
 
