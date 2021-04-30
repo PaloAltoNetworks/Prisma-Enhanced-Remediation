@@ -29,5 +29,22 @@ Apply your changes and build the Prisma AWS remediation environment.
 terraform apply -var-file="prisma.tfvars"
 ```
 
+**Testing from your local environment**
+
+Setup:
+```
+export AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
+export AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+terraform init -backend-config="prisma.config"
+terraform plan -var-file="prisma.tfvars"
+terraform apply -var-file="prisma.tfvars"
+```
+
+Tear down:
+```
+terraform destroy
+```
+
 [Terraform Language Documentation](https://www.terraform.io/docs/configuration/index.html)
 
