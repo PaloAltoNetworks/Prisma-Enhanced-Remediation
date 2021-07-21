@@ -87,6 +87,19 @@ resource "azurerm_app_service_plan" "terraform-service-plan" {
   depends_on = [azurerm_resource_group.terraform-resource-group]
 }
 
+resource azurerm_app_service "terraform-app-service" {
+  name                = "terraform-app-service"
+  resource_group_name = azurerm_resource_group.terraform-resource-group.name
+  location            = azurerm_resource_group.terraform-resource-group.location
+  app_service_plan_id = azurerm_app_service_plan.terraform-service-plan.id
+  
+  identity {
+    type = "SystemAssigned"
+  }
+
+  depends_on = [azurerm_app_service_plan.terraform-service-plan]
+}
+
 resource azurerm_servicebus_queue_authorization_rule "servicebus-queue-rule" {
   name                = "servicebus-auth-rule"
   namespace_name      = azurerm_servicebus_namespace.terraform-namespace.name
