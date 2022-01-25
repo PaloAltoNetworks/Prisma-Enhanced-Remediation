@@ -49,7 +49,8 @@ runbook_lookup = {
     '7913fcbf-b679-5aac-d979-1b6817becb22' : 'AWS-SSS-014',
     '630d3779-d932-4fbf-9cce-6e8d793c6916' : 'PC-AWS-S3-29',
     '49f4760d-c951-40e4-bfe1-08acaa17672a' : 'AWS-VPC-020',
-    '11111111-1111-1111-1111-111111111111' : 'AWS-TEST-001'
+    '11111111-1111-1111-1111-111111111111' : 'AWS-TEST-001',
+    '3e631f04-e5f3-47e2-bb33-a213782494e0' : 'AWS-BUCK-001' #new remed
 }
 
 
@@ -74,8 +75,14 @@ def parse_alert_message(sqs_message):
         alert = json.loads(sqs_message)
 
         # Check for Prisma Cloud test notification
+        #this might be old one
         if alert['alertId'] == 'P-0':
             return {'error': "Prisma Cloud Test Notification", 'data': alert['alertId']}
+
+        # Check for Prisma Cloud test notification
+        #Latest test notification alert id
+        if alert['alertId'] == "T-0":
+            return {'error': None, 'data': alert['alertId']}    
             
         # Only remediate AWS
         #if alert['cloudType'] != 'aws':
@@ -149,6 +156,10 @@ def lambda_handler(event, context):
 
         if parsed_alert['data'] == 'P-0':
             print(parsed_alert['error'])
+        #processing the test notification message so that it doesnot stay in SQS Queue(Message in flight) and error out each and every time
+        #This is definitely important or else the message stays in the queue forever and lambda will throw errors each and every time the message is consumed
+        elif parsed_alert['data'] == 'T-0':
+            print('Prisma test Notification processed sucessfully')    
         else:
             
             if parsed_alert['error'] is not None:
