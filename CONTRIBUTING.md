@@ -55,6 +55,11 @@ of making a fork and pull request yourself:
 > 5. Create a pull request to pull the changes from your fork back into the
 >    upstream repository
 
+## Added Remediation for PC-AWS-S3-322  AWS S3 bucket not configured with secure data transport policy
+
+## Adding changes to index.py as the test notifications from Prisma to AWS is coming with alert id as "T-0"
+
+
 Please use clear commit messages so we can understand what each commit does.
 We'll review every PR and might offer feedback or request changes before
 merging.
