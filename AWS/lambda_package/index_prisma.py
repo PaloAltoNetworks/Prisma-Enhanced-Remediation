@@ -74,7 +74,7 @@ def parse_alert_message(sqs_message):
         alert = json.loads(sqs_message)
 
         # Check for Prisma Cloud test notification
-        if alert['alertId'] == 'P-0':
+        if alert['alertId'] == 'T-0':
             return {'error': "Prisma Cloud Test Notification", 'data': alert['alertId']}
             
         # Only remediate AWS
@@ -147,7 +147,7 @@ def lambda_handler(event, context):
     for record in event['Records']:
         parsed_alert = parse_alert_message(record['body'])
 
-        if parsed_alert['data'] == 'P-0':
+        if parsed_alert['data'] == 'T-0':
             print(parsed_alert['error'])
         else:
             
